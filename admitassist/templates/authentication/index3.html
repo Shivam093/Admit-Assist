@@ -1,0 +1,732 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>Helping you achieve your U.S. Masters dream| AdmitAssist</title>
+
+<meta property="og:title" content="Profile Evaluation for MS in US | Free Admit Predictor Tool">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="AdmitAssist">
+  <link rel="stylesheet" media="all" href="https://d1x493qjo34sk9.cloudfront.net/assets/application-8eabab215fec8419a23ece9f0026bbc06da6aee9fecbf31cad6ebe3c1e902ab1.css" />
+  <script src="https://d1x493qjo34sk9.cloudfront.net/assets/application-3a8a879f3e2925998abee4753c4b1868a540bfcda7d3896bd0d0045d54ed19b4.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.full.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.full.min.js"></script>
+  <script>
+var mobile_number = '';
+</script>
+  <script>
+var is_user_signed_in = false;
+</script>
+                                                    <!-- Put own logo   -->
+<link rel="shortcut icon" type="image/x-icon" href="https://d1x493qjo34sk9.cloudfront.net/assets/meta_icons/favicon-be71a55e6993f30ae91b9b74b6c845c056043bac3c1499021e006fdd8a4428b5.ico" />
+     
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/lazyframe@2.2.7/dist/lazyframe.min.js" async></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lazyframe@2.2.7/dist/lazyframe.css" />
+
+<body>
+  
+  {% for message in messages %}
+  <div style="background-color:white" class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong>Message:</strong> {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  {% endfor %}
+  {% if user.is_authenticated %}
+  {% endif %}
+
+  <div id="wrapper">
+    <div id="background-wrapper">
+      <!-- Move conditional footer and header to controller -->
+<header id="header" style=" background-color: #5995fd;">
+  <div class="container">
+    <nav class="navbar navbar-collapsed-sm navbar-default" id="nav" role="navigation">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target=".navbar-header-collapse" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <!-- put own logo -->
+            <img src="{% static 'images/logo2.png' %}" alt="AdmitAssist" width="160px" height="75px" />
+        </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-header-collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <!-- correct href -->
+              <a href="/signup">
+                  <span>
+                    <b>Sign-Up / Login</b>
+                  </span>
+</a>            </li>
+<!--
+          <li class="dropdown">
+            <a href="#">
+              <span>
+                <b>GRE</b>
+              </span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="#">
+              <span>
+                <b>TOEFL</b>
+              </span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-delay="50" data-hover="dropdown" data-toggle="dropdown" href="#">
+              <span>
+                <b>IELTS</b>
+              </span>
+            </a>-->
+          <!-- <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-submenu" >
+                <a class = "trigger dropdown-toggle" href="#">
+                  <span>
+                    IELTS
+                  </span>
+                </a>
+              </li>
+              <li class="dropdown-submenu" >
+                <a class = "trigger dropdown-toggle" href="#">
+                  <span>
+                    TOEFL
+                  </span>
+                </a>
+              </li>
+              <li class="dropdown-submenu" >
+                <a class = "trigger dropdown-toggle" href="#">
+                  <span>
+                    GRE
+                  </span>
+                </a>
+              </li>
+            </ul> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<script type="text/javascript">
+  $(function(){
+    $(".dropdown-menu > li > a.trigger").on("click",function(e){
+        var current=$(this).next();
+        var grandparent=$(this).parent().parent();
+        if($(this).hasClass('left-caret')||$(this).hasClass('right-caret'))
+            $(this).toggleClass('right-caret left-caret');
+        grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
+        grandparent.find(".sub-menu:visible").not(current).hide();
+        current.toggle();
+        e.stopPropagation();
+    });
+    $(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
+        var root=$(this).closest('.dropdown');
+        root.find('.left-caret').toggleClass('right-caret left-caret');
+        root.find('.sub-menu:visible').hide();
+    });
+  });
+</script>
+<div id="main">
+    <!-- <script>
+        var data = [{"name":"Boston University","rank":34,"admit_probability":24,"abbreviation":"Boston","college_id":5},{"name":"California State University Fullerton","rank":0,"admit_probability":71,"abbreviation":"CSU Fullerton","college_id":11},{"name":"Carnegie Mellon University","rank":5,"admit_probability":28,"abbreviation":"CMU","college_id":14},{"name":"Columbia University","rank":13,"admit_probability":47,"abbreviation":"Columbia","college_id":21},{"name":"Cornell University","rank":13,"admit_probability":26,"abbreviation":"Cornell","college_id":22},{"name":"George Mason University","rank":104,"admit_probability":77,"abbreviation":"GMU","college_id":31},{"name":"Boise State University","rank":167,"admit_probability":38,"abbreviation":"Boise","college_id":4},{"name":"Georgia Institute of Technology","rank":7,"admit_probability":19,"abbreviation":"Georgia Tech","college_id":33},{"name":"Bradley University","rank":0,"admit_probability":78,"abbreviation":"Bradley","college_id":6},{"name":"California State University East Bay","rank":0,"admit_probability":66,"abbreviation":"CSU East Bay","college_id":9},{"name":"California State University Fresno","rank":0,"admit_probability":46,"abbreviation":"CSU Fresno","college_id":10},{"name":"California State University Long Beach","rank":151,"admit_probability":21,"abbreviation":"CSU Long Beach","college_id":12},{"name":"California State University Northridge","rank":0,"admit_probability":58,"abbreviation":"CSU Northridge","college_id":13},{"name":"Clarkson University","rank":127,"admit_probability":68,"abbreviation":"Clarkson","college_id":16},{"name":"Cleveland State University","rank":187,"admit_probability":67,"abbreviation":"CSU","college_id":18},{"name":"Colorado School of Mines","rank":56,"admit_probability":44,"abbreviation":"Mines","college_id":19},{"name":"Colorado State University","rank":67,"admit_probability":46,"abbreviation":"Colorado","college_id":20},{"name":"Dartmouth College","rank":52,"admit_probability":19,"abbreviation":"Dartmouth","college_id":23},{"name":"Drexel University","rank":75,"admit_probability":53,"abbreviation":"Drexel","college_id":24},{"name":"Florida Institute of Technology","rank":148,"admit_probability":76,"abbreviation":"FIT","college_id":28},{"name":"Florida Atlantic University","rank":186,"admit_probability":45,"abbreviation":"Florida Atlantic","college_id":27},{"name":"Florida State University","rank":0,"admit_probability":73,"abbreviation":"FSU","college_id":30},{"name":"Florida International University","rank":139,"admit_probability":46,"abbreviation":"Florida Inter.","college_id":29},{"name":"George Washington University","rank":89,"admit_probability":79,"abbreviation":"George Washin.","college_id":32},{"name":"Georgia State University","rank":0,"admit_probability":79,"abbreviation":"Georgia State","college_id":34},{"name":"Case Western Reserve University","rank":50,"admit_probability":34,"abbreviation":"CWRU","college_id":15},{"name":"Auburn University","rank":65,"admit_probability":75,"abbreviation":"AU","college_id":2},{"name":"Iowa State University","rank":45,"admit_probability":33,"abbreviation":"Iowa State","college_id":38},{"name":"Lamar University","rank":195,"admit_probability":82,"abbreviation":"Lamar","college_id":42},{"name":"Michigan Technological University","rank":85,"admit_probability":45,"abbreviation":"MTU","college_id":50},{"name":"Missouri University of Science and Technology","rank":89,"admit_probability":53,"abbreviation":"Missouri S\u0026T","college_id":52},{"name":"New York Institute of Technology New York","rank":0,"admit_probability":76,"abbreviation":"NYIT","college_id":56},{"name":"New York University Tandon School of Engineering","rank":0,"admit_probability":63,"abbreviation":"NYU Tandon","college_id":59},{"name":"Kansas State University","rank":102,"admit_probability":37,"abbreviation":"Kent State","college_id":40},{"name":"Lehigh University","rank":60,"admit_probability":32,"abbreviation":"Lehigh","college_id":44},{"name":"Kent State University","rank":0,"admit_probability":67,"abbreviation":"KSU","college_id":41},{"name":"North Carolina State University","rank":25,"admit_probability":43,"abbreviation":"NCSU","college_id":60},{"name":"Lawrence Technological University","rank":171,"admit_probability":68,"abbreviation":"LTU","college_id":43},{"name":"Louisiana State University","rank":99,"admit_probability":35,"abbreviation":"LSU","college_id":45},{"name":"Michigan State University","rank":56,"admit_probability":24,"abbreviation":"MSU","college_id":49},{"name":"Louisiana Tech University","rank":133,"admit_probability":42,"abbreviation":"La. Tech","college_id":46},{"name":"Marquette University","rank":133,"admit_probability":60,"abbreviation":"Marquette","college_id":47},{"name":"Ohio State University","rank":31,"admit_probability":16,"abbreviation":"OSU","college_id":67},{"name":"Northwestern University","rank":19,"admit_probability":25,"abbreviation":"Northwestern","college_id":65},{"name":"Mississippi State University","rank":120,"admit_probability":42,"abbreviation":"Mississippi State","college_id":51},{"name":"Montana State University","rank":166,"admit_probability":30,"abbreviation":"Montana","college_id":53},{"name":"New York institute of technology Old Westbury","rank":0,"admit_probability":87,"abbreviation":"NYIT-Westbury","college_id":57},{"name":"New York University","rank":45,"admit_probability":63,"abbreviation":"NYU","college_id":58},{"name":"North Dakota State University","rank":162,"admit_probability":29,"abbreviation":"NDSU","college_id":61},{"name":"Northern Illinois University","rank":0,"admit_probability":92,"abbreviation":"NIU","college_id":63},{"name":"Northwest Missouri State University","rank":0,"admit_probability":92,"abbreviation":"NWMissouri","college_id":64},{"name":"Oakland University","rank":191,"admit_probability":32,"abbreviation":"Oakland","college_id":66},{"name":"Indiana University-Purdue University","rank":116,"admit_probability":89,"abbreviation":"Indiana","college_id":36},{"name":"Binghamton University","rank":127,"admit_probability":82,"abbreviation":"Binghamton","college_id":3},{"name":"Purdue University","rank":8,"admit_probability":30,"abbreviation":"Purdue","college_id":74},{"name":"Rice University","rank":29,"admit_probability":23,"abbreviation":"Rice","college_id":76},{"name":"Rutgers University","rank":54,"admit_probability":48,"abbreviation":"Rutgers","college_id":78},{"name":"Stanford University","rank":2,"admit_probability":15,"abbreviation":"Stanford","college_id":86},{"name":"South Dakota School of Mines \u0026 Technology","rank":129,"admit_probability":46,"abbreviation":"SDSM\u0026T","college_id":82},{"name":"Pace University","rank":0,"admit_probability":97,"abbreviation":"Pace","college_id":71},{"name":"Stevens Institute of Technology","rank":81,"admit_probability":87,"abbreviation":"SIT","college_id":87},{"name":"Portland State University","rank":163,"admit_probability":40,"abbreviation":"PSU","college_id":73},{"name":"Stony Brook University","rank":67,"admit_probability":43,"abbreviation":"SUNY","college_id":88},{"name":"Syracuse University","rank":78,"admit_probability":59,"abbreviation":"Syracuse","college_id":89},{"name":"Texas A\u0026M University College Station","rank":11,"admit_probability":34,"abbreviation":"Texas A\u0026M Col.St.","college_id":93},{"name":"The University of North Carolina at charlotte","rank":137,"admit_probability":60,"abbreviation":"UNC Charlotte","college_id":96},{"name":"The University of Texas at Arlington","rank":73,"admit_probability":76,"abbreviation":"UTA","college_id":98},{"name":"San Jose State University","rank":0,"admit_probability":62,"abbreviation":"San Jose","college_id":80},{"name":"santa clara university","rank":139,"admit_probability":60,"abbreviation":"SCU","college_id":81},{"name":"The University of Virginia","rank":39,"admit_probability":29,"abbreviation":"Virginia","college_id":100},{"name":"South Dakota State University","rank":184,"admit_probability":50,"abbreviation":"South Dakota","college_id":83},{"name":"Southern Methodist University","rank":104,"admit_probability":66,"abbreviation":"SMU","college_id":85},{"name":"Temple University","rank":123,"admit_probability":52,"abbreviation":"Temple","college_id":90},{"name":"Texas Tech University Lubbock","rank":94,"admit_probability":58,"abbreviation":"Texas Tech","college_id":94},{"name":"The University of Memphis","rank":139,"admit_probability":52,"abbreviation":"UofM","college_id":95},{"name":"The University of Rhode Island","rank":132,"admit_probability":63,"abbreviation":"URI","college_id":97},{"name":"The University of Texas at San Antonio","rank":149,"admit_probability":59,"abbreviation":"UTSA","college_id":99},{"name":"Oregon State University","rank":78,"admit_probability":22,"abbreviation":"Oregon","college_id":70},{"name":"Ohio University","rank":161,"admit_probability":38,"abbreviation":"Ohio","college_id":68},{"name":"California Institute of Technology","rank":4,"admit_probability":9,"abbreviation":"Caltech","college_id":7},{"name":"University of California Berkeley","rank":3,"admit_probability":17,"abbreviation":"UC Berkeley","college_id":110},{"name":"University of Cincinnati","rank":87,"admit_probability":70,"abbreviation":"Cincinnati","college_id":120},{"name":"University of Colorado Boulder","rank":32,"admit_probability":50,"abbreviation":"CU","college_id":121},{"name":"University of Delaware","rank":48,"admit_probability":36,"abbreviation":"Delaware","college_id":125},{"name":"University of Illinois at Chicago","rank":63,"admit_probability":25,"abbreviation":"UIC","college_id":129},{"name":"University of Akron","rank":0,"admit_probability":60,"abbreviation":"Akron","college_id":104},{"name":"University of Alabama Huntsville","rank":89,"admit_probability":70,"abbreviation":"UAH","college_id":106},{"name":"University of Arizona","rank":54,"admit_probability":49,"abbreviation":"UA","college_id":108},{"name":"University of Bridgeport","rank":189,"admit_probability":59,"abbreviation":"UB","college_id":109},{"name":"University of California Los Angeles","rank":16,"admit_probability":23,"abbreviation":"UCLA","college_id":113},{"name":"University of California Irvine","rank":37,"admit_probability":18,"abbreviation":"UCI","college_id":111},{"name":"University of California Riverside","rank":67,"admit_probability":51,"abbreviation":"CSUS Sacra.","college_id":114},{"name":"University of Connecticut","rank":65,"admit_probability":30,"abbreviation":"Uconn","college_id":123},{"name":"University of California Santa Cruz","rank":0,"admit_probability":36,"abbreviation":"UC Cruz","college_id":116},{"name":"University of cental Missouri","rank":0,"admit_probability":90,"abbreviation":"CMSU","college_id":118},{"name":"University of Central Florida","rank":75,"admit_probability":49,"abbreviation":"UCF","college_id":119},{"name":"University of Dayton","rank":56,"admit_probability":40,"abbreviation":"Dayton","college_id":124},{"name":"University of Iowa","rank":67,"admit_probability":22,"abbreviation":"Iowa","college_id":132},{"name":"University of Denver","rank":177,"admit_probability":62,"abbreviation":"DU","college_id":126},{"name":"University of Houston Clear Lake","rank":0,"admit_probability":65,"abbreviation":"UHCL","college_id":128},{"name":"University of Illinois Springfield","rank":0,"admit_probability":76,"abbreviation":"UIS","college_id":131},{"name":"University of Kansas","rank":94,"admit_probability":44,"abbreviation":"Kansas","college_id":133},{"name":"University of Kentucky","rank":94,"admit_probability":44,"abbreviation":"UK","college_id":134},{"name":"University of California San Diego","rank":13,"admit_probability":23,"abbreviation":"UC San Diego","college_id":112},{"name":"University at Albany State University of New York","rank":0,"admit_probability":93,"abbreviation":"SUNY Albany","college_id":102},{"name":"Duke University","rank":29,"admit_probability":27,"abbreviation":"Duke","college_id":25},{"name":"University of Michigan Ann Arbor","rank":5,"admit_probability":39,"abbreviation":"Umich","college_id":144},{"name":"University of Minnesota","rank":27,"admit_probability":30,"abbreviation":"Minnesota","college_id":146},{"name":"University of Missouri","rank":89,"admit_probability":23,"abbreviation":"Mizzou","college_id":148},{"name":"University of Pennsylvania","rank":19,"admit_probability":28,"abbreviation":"Upenn","college_id":161},{"name":"University of Louisville","rank":120,"admit_probability":37,"abbreviation":"UofL","college_id":136},{"name":"University of Maine","rank":164,"admit_probability":69,"abbreviation":"Umaine","college_id":137},{"name":"University of Pittsburgh","rank":42,"admit_probability":56,"abbreviation":"Pitt","college_id":162},{"name":"University of Massachusetts Dartmouth","rank":139,"admit_probability":68,"abbreviation":"UMass Dart.","college_id":141},{"name":"University of Massachusetts Lowell","rank":104,"admit_probability":79,"abbreviation":"UMass Lowell","college_id":142},{"name":"University of Miami","rank":104,"admit_probability":62,"abbreviation":"UM","college_id":143},{"name":"University of Rochester","rank":45,"admit_probability":38,"abbreviation":"UR","college_id":163},{"name":"University of Michigan Dearborn","rank":141,"admit_probability":52,"abbreviation":"UM-Dearborn","college_id":145},{"name":"University of Southern California","rank":11,"admit_probability":32,"abbreviation":"USC LA","college_id":166},{"name":"University of Mississippi","rank":157,"admit_probability":28,"abbreviation":"Ole Miss","college_id":147},{"name":"University of Nebraska","rank":94,"admit_probability":34,"abbreviation":"UNL","college_id":150},{"name":"University of New Mexico","rank":99,"admit_probability":44,"abbreviation":"UNM","college_id":155},{"name":"University of Nevada Las Vegas","rank":152,"admit_probability":59,"abbreviation":"UNLV","college_id":151},{"name":"University of Nevada Reno","rank":127,"admit_probability":43,"abbreviation":"UNR","college_id":152},{"name":"University of New Hampshire","rank":139,"admit_probability":61,"abbreviation":"New Hampshire","college_id":153},{"name":"University of New Haven","rank":0,"admit_probability":79,"abbreviation":"UNH","college_id":154},{"name":"University of New Orleans","rank":193,"admit_probability":37,"abbreviation":"UNO","college_id":156},{"name":"University of North Texas","rank":176,"admit_probability":82,"abbreviation":"UNT","college_id":158},{"name":"University of Oklahoma","rank":99,"admit_probability":72,"abbreviation":"OU","college_id":160},{"name":"University of South Carolina","rank":104,"admit_probability":47,"abbreviation":"USC","college_id":164},{"name":"University of South Florida","rank":89,"admit_probability":47,"abbreviation":"USF Tampa","college_id":165},{"name":"University of Louisiana","rank":196,"admit_probability":28,"abbreviation":"UL Lafayette","college_id":135},{"name":"Arizona State University","rank":42,"admit_probability":62,"abbreviation":"ASU","college_id":1},{"name":"California State University Los Angeles","rank":0,"admit_probability":83,"abbreviation":"CSU LA","college_id":8},{"name":"Clemson University","rank":75,"admit_probability":31,"abbreviation":"Clemson","college_id":17},{"name":"Illinois Institute of Technology","rank":78,"admit_probability":69,"abbreviation":"Illinois","college_id":35},{"name":"Vanderbilt University","rank":36,"admit_probability":15,"abbreviation":"Vandy","college_id":179},{"name":"University of Wisconsin Madison","rank":18,"admit_probability":17,"abbreviation":"UW\\D0Madison","college_id":175},{"name":"University of Toledo","rank":172,"admit_probability":41,"abbreviation":"U of Toledo","college_id":171},{"name":"University of Tulsa","rank":120,"admit_probability":25,"abbreviation":"TU","college_id":172},{"name":"University of Utah","rank":60,"admit_probability":34,"abbreviation":"Utah","college_id":173},{"name":"Virginia Tech","rank":27,"admit_probability":19,"abbreviation":"Virginia Tech","college_id":181},{"name":"Utah State University","rank":133,"admit_probability":40,"abbreviation":"Utah State","college_id":178},{"name":"University of Wyoming","rank":133,"admit_probability":44,"abbreviation":"UW-Laramie","college_id":177},{"name":"Wayne State University","rank":116,"admit_probability":86,"abbreviation":"Wayne","college_id":183},{"name":"Washington State University","rank":81,"admit_probability":24,"abbreviation":"WSU","college_id":182},{"name":"Virginia Commonwealth University","rank":127,"admit_probability":59,"abbreviation":"VCU","college_id":180},{"name":"Yale University","rank":38,"admit_probability":18,"abbreviation":"Yale","college_id":189},{"name":"Johns Hopkins University","rank":19,"admit_probability":62,"abbreviation":"TJHU","college_id":39},{"name":"West Virginia University","rank":104,"admit_probability":46,"abbreviation":"WVU","college_id":184},{"name":"Worcester Polytechnic Institute","rank":94,"admit_probability":54,"abbreviation":"WPI","college_id":187},{"name":"Wright State University","rank":139,"admit_probability":71,"abbreviation":"Wright","college_id":188},{"name":"University of Texas at Dallas","rank":63,"admit_probability":44,"abbreviation":"UT Dallas","college_id":170},{"name":"University of Tennessee at Chattanooga","rank":180,"admit_probability":87,"abbreviation":"UT-Chatta.","college_id":168},{"name":"Fairleigh Dickinson University","rank":0,"admit_probability":82,"abbreviation":"FDU","college_id":26},{"name":"Indiana University Bloomington","rank":0,"admit_probability":65,"abbreviation":"Indiana Bloom.","college_id":37},{"name":"Tufts University","rank":67,"admit_probability":42,"abbreviation":"Tufts","college_id":101},{"name":"University of Colorado Denver","rank":0,"admit_probability":55,"abbreviation":"CU Denver","college_id":122},{"name":"New Mexico State University","rank":139,"admit_probability":48,"abbreviation":"NMSU","college_id":55},{"name":"Oklahoma State University","rank":0,"admit_probability":36,"abbreviation":"Oklahoma","college_id":69},{"name":"Southern Illinois University","rank":175,"admit_probability":58,"abbreviation":"SIU","college_id":84},{"name":"Tennessee Technological University","rank":179,"admit_probability":34,"abbreviation":"Tennessee Tech","college_id":91},{"name":"University of Alaska Fairbanks","rank":173,"admit_probability":32,"abbreviation":"UAF","college_id":107},{"name":"University of Maryland Baltimore County","rank":104,"admit_probability":50,"abbreviation":"UMBC","college_id":139},{"name":"University of Massachusetts Amherst","rank":56,"admit_probability":36,"abbreviation":"UMass Amherst","college_id":140},{"name":"University of Missouri Kansas City","rank":178,"admit_probability":77,"abbreviation":"UMKC","college_id":149},{"name":"Western Michigan University","rank":194,"admit_probability":83,"abbreviation":"WMU","college_id":185},{"name":"University of Alabama Birmingham","rank":131,"admit_probability":82,"abbreviation":"UAB","college_id":105},{"name":"University of California Santa Barbara","rank":19,"admit_probability":13,"abbreviation":"UC Barbara","college_id":115},{"name":"University of North Carolina","rank":81,"admit_probability":35,"abbreviation":"UNC system","college_id":157},{"name":"University of Tennessee Knoxville","rank":60,"admit_probability":34,"abbreviation":"UT Knoxville","college_id":167},{"name":"University of Wisconsin Milwaukee","rank":116,"admit_probability":50,"abbreviation":"UW\\D0Milwaukee","college_id":176},{"name":"Massachusetts Institute of Technology","rank":1,"admit_probability":13,"abbreviation":"MIT","college_id":48},{"name":"New Jersey Institute of Technology","rank":87,"admit_probability":84,"abbreviation":"NJIT","college_id":54},{"name":"Northeastern University","rank":39,"admit_probability":63,"abbreviation":"Northeastern","college_id":62},{"name":"Pennsylvania State University","rank":32,"admit_probability":20,"abbreviation":"Penn State","college_id":72},{"name":"Rensselaer Polytechnic Institute","rank":39,"admit_probability":47,"abbreviation":"RPI","college_id":75},{"name":"Rochester Institute of Technology","rank":81,"admit_probability":44,"abbreviation":"RIT","college_id":77},{"name":"San Diego State University","rank":133,"admit_probability":31,"abbreviation":"SDSU","college_id":79},{"name":"texas a and m university kingsville","rank":0,"admit_probability":91,"abbreviation":"Texas A\u0026M","college_id":92},{"name":"University at Buffalo","rank":67,"admit_probability":33,"abbreviation":"SUNY Buffalo","college_id":103},{"name":"University of California Davis","rank":34,"admit_probability":14,"abbreviation":"UC Davis","college_id":117},{"name":"University of Florida","rank":42,"admit_probability":46,"abbreviation":"UF","college_id":127},{"name":"University of Illinois at Urbana Champaign","rank":9,"admit_probability":30,"abbreviation":"UIUC","college_id":130},{"name":"University of Maryland College Park","rank":24,"admit_probability":50,"abbreviation":"UMD","college_id":138},{"name":"University of Notre Dame","rank":48,"admit_probability":21,"abbreviation":"Notre Dame","college_id":159},{"name":"University of Texas at Austin","rank":9,"admit_probability":12,"abbreviation":"UT Austin","college_id":169},{"name":"University of Washington","rank":25,"admit_probability":27,"abbreviation":"UW","college_id":174},{"name":"Wichita State University","rank":104,"admit_probability":74,"abbreviation":"Wichita","college_id":186}];
+    </script> -->
+ 
+<div id="main-content">
+  <div class="container">
+    <div class="row">
+            <div style="text-align: center; margin-top: -60px;" ><h1><span style="color:  #5995fd;">Admit Prediction Tool</span></h1></div>
+      <center><p class='text-center lead'>Get Your Acceptance Rate for MS in US Here!</p></center>
+
+      <div class='row portfolio-boxes'>
+        <div class="col-md-12 col-sm-12 col-xs-12 portfolio-box portfolio-filter-photography portfolio-item">
+            <link rel="stylesheet" media="all" href="https://d1x493qjo34sk9.cloudfront.net/assets/select-45d39cfa7ed5a87d1688e4f1beb07d5ee4eb8d28feb5edc07432ca27b664ce1f.css" />
+<form role="form" class="new_profile_evaluator" id="new_profile_evaluator" data-toggle="validator" action="result" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="8U1XaKN5K2TFh4hJKZqlJ0juE2tEvuCLnsPOxLCkBKiBdel7HNLYMWzB3lN25yLyzzv4ylHaE+MLMpQRpDYmdQ==" />
+  
+  <fieldset>
+  <div class='jumbotron'>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label style="font-size: 17px">GRE scores</label>
+      </div>
+      <div class="col-sm-2 form-group">
+        <div class="form-group"><label class="control-label" for="profile_evaluator_test_taken">Test taken?</label><select class="form-control" style="padding-left: 45%;" name="profile_evaluator[test_taken]" id="profile_evaluator_test_taken"><option value="true">Yes</option>
+<option value="false">No</option></select></div>
+      </div>
+      <div id ="taken">
+        <div class="col-sm-3 form-group">
+          <label class="control-label" for="profile_evaluator_gre_quant" id="gre_quant">GRE Quant</label>
+            <input min="130" max="170" required="required" class="form-control" type="number" name="profile_evaluator[gre_quant]" id="profile_evaluator_gre_quant" />
+            <div class="help-block with-errors"></div>
+        </div>
+        <div class="col-sm-3 form-group">
+          <label class="control-label" for="profile_evaluator_gre_verbal" id="gre_verbal">GRE Verbal</label>
+            <input min="130" max="170" required="required" class="form-control" type="number" name="profile_evaluator[gre_verbal]" id="profile_evaluator_gre_verbal" />
+            <div class="help-block with-errors"></div>
+        </div>
+        <!--
+        <div class="col-sm-2 form-group">
+          <label class="control-label" for="profile_evaluator_gre_awa" id="gre_awa">GRE AWA</label>
+            <input min="0" max="6" step="0.5" required="required" class="form-control" type="number" name="profile_evaluator[gre_awa]" id="profile_evaluator_gre_awa" />
+            <div class="help-block with-errors"></div>
+        </div>
+      -->
+      </div>
+    </div>
+
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label style="font-size: 17px">English scores</label>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group"><label class="control-label required" for="profile_evaluator_english_score">TOEFL/IELTS</label><select class="form-control" style="padding-left: 45%;" name="profile_evaluator[english_score]" id="profile_evaluator_english_score"><option value="toefl">TOEFL</option>
+<option value="ielts">IELTS</option></select></div>
+      </div>
+
+      <div id = "toefl_div" class="col-sm-5 form-group">
+        <label class="control-label" for="profile_evaluator_toefl">TOEFL</label>
+        <input min="0" max="120" step="1" required="required" class="form-control" type="number" name="profile_evaluator[toefl]" id="profile_evaluator_toefl" />
+        <div class="help-block with-errors"></div>
+      </div>
+
+      <div id = "ielts_div" class="col-sm-5 form-group hidden">
+        <label class="control-label" for="profile_evaluator_toefl">IELTS</label>
+        <input min="1" max="9" step="0.5" required="required" class="form-control" type="number" name="profile_evaluator[ielts]" id="profile_evaluator_ielts" />
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label style="font-size: 17px">Academic record</label>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group"><label class="control-label required" for="profile_evaluator_gpa_scale">GPA Scale</label><select class="form-control" style="padding-left: 45%;" name="profile_evaluator[gpa_scale]" id="profile_evaluator_gpa_scale"><option value="10">10</option>
+<option value="100">100</option></select></div>
+      </div>
+      <div class="col-sm-5 form-group">
+        <label class="control-label" for="profile_evaluator_gpa">Your GPA</label>
+        <input min="0" max="10" step="0.1" required="required" class="form-control" type="number" name="profile_evaluator[gpa]" id="profile_evaluator_gpa" />
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label style="font-size: 17px">Target details</label>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group"><label class="control-label required" for="profile_evaluator_postgrad_major_id">Postgrad Major</label><select class="form-control" name="profile_evaluator[postgrad_major_id]" id="profile_evaluator_postgrad_major_id" onchange="updateYOptions()">
+          <option value="">Select an option</option>
+          
+          <option value="7">Computer Science</option>
+          
+          <option value="20">Electrical Engineering</option></select></div>
+        </div>
+      <div class="col-sm-5">
+        <label for="dream_school_id" class='control-label'>University Name</label> 
+        <select id="dream_school_id" name="profile_evaluator[dream_school_id]" class="form-control" style="width: 100%">
+          <option value="">Select an option</option>
+         
+        </select>
+      </div>
+      
+      
+      <!-- Work ex and publications to be included -->
+    </div>
+
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+    <script>
+      function updateYOptions() {
+        var xDropdown = document.getElementById("profile_evaluator_postgrad_major_id");
+        var yDropdown = document.getElementById("dream_school_id");
+    
+        // Clear previous options
+        yDropdown.innerHTML = "";
+        var optionsA = ['Arizona State University', 'Arkansas State University', 'Arkansas State University, Jonesboro', 'Boston University', 'Brown University', 'California State University, Chico', 'California State University, East Bay', 'California State University, Fresno', 'California State University, Long Beach', 'California State University, Los Angeles', 'California State University, Northridge', 'Carnegie Mellon University', 'Central Michigan University', 'Clemson University', 'Colorado State University', 'Colorado State University, Fort Collins', 'Columbia University', 'Concordia University, Montreal', 'Cornell University', 'Dartmouth College', 'DePaul University', 'Drexel University', 'Duke University', 'Florida State University', 'George Mason University', 'George Washington University', 'Georgia Institute of Technology', 'Georgia State University', 'Harvard University', 'Illinois Institute of Technology', 'Indiana University, Bloomington', 'Iowa State University', 'Johns Hopkins University', 'Kent State University', 'Lamar University', 'Massachusetts Institute of Technology', 'Michigan State University', 'Michigan Technological University', 'Mississippi State University', 'Missouri University of Science & Technology', 'Missouri University of Science and Technology', 'New Jersey Institute of Technology', 'New York Institute of Technology', 'New York Institute of Technology, Manhattan', 'New York Institute of Technology, Old Westbury', 'New York University', 'North Carolina State University', 'North Carolina State University, Raleigh', 'Northeastern University', 'Northern Arizona University', 'Northern Illinois University', 'Northwestern University', 'Old Dominion University', 'Oregon State University', 'Pace University', 'Pennsylvania State University', 'Portland State University', 'Purdue University, Northwest', 'Purdue University, West Lafayette', 'Rice University', 'Rochester Institute of Technology', 'Rutgers University, New Brunswick', 'SUNY, University at Buffalo', 'Sacred Heart University', 'San Diego State University', 'San Jose State University', 'Santa Clara University', 'Southern Illinois University Edwardsville', 'Southern Illinois University, Edwardsville', 'Southern Methodist University', 'Stanford University', 'State University of New York, Albany', 'State University of New York, Buffalo', 'State University of New York, Stony Brook', 'Stevens Institute of Technology', 'Syracuse University', 'Texas A&M University, College Station', 'Texas Tech University', 'University at Albany, SUNY', 'University of Alabama, Birmingham', 'University of Arizona', 'University of Bridgeport', 'University of California, Berkeley', 'University of California, Davis', 'University of California, Irvine', 'University of California, Los Angeles', 'University of California, Riverside', 'University of California, San Diego', 'University of California, Santa Barbara', 'University of California, Santa Cruz', 'University of Central Florida', 'University of Central Missouri', 'University of Central Oklahoma', 'University of Chicago', 'University of Cincinnati', 'University of Colorado, Boulder', 'University of Colorado, Denver', 'University of Connecticut', 'University of Florida', 'University of Florida, Gainesville', 'University of Houston', 'University of Houston, Clear Lake', 'University of Illinois, Chicago', 'University of Illinois, Springfield', 'University of Illinois, Urbana-Champaign', 'University of Maryland, Baltimore County', 'University of Maryland, College Park', 'University of Massachusetts, Amherst', 'University of Massachusetts, Lowell', 'University of Michigan, Ann Arbor', 'University of Minnesota, Twin Cities', 'University of Missouri, Columbia', 'University of Missouri, Kansas City', 'University of Nebraska, Omaha', 'University of New Hampshire', 'University of New Haven', 'University of North Carolina, Chapel Hill', 'University of North Carolina, Charlotte', 'University of North Texas', 'University of Pittsburgh', 'University of Pittsburgh, Pittsburgh Campus', 'University of Rochester', 'University of San Francisco', 'University of South Florida', 'University of Southern California', 'University of Tennessee, Knoxville', 'University of Texas, Arlington', 'University of Texas, Austin', 'University of Texas, Dallas', 'University of Utah', 'University of Virginia', 'University of Washington', 'University of Wisconsin, Madison', 'University of Wisconsin, Milwaukee', 'Virginia Tech University', 'Washington University in St. Louis', 'Western Illinois University', 'Wichita State University', 'Worcester Polytechnic Institute', 'Wright State University', 'Yale University'];
+        var optionsB = ['Arizona State University', 'Boston University', 'California State Polytechnic University, Pomona', 'California State University, Fresno', 'California State University, Fullerton', 'California State University, Long Beach', 'California State University, Los Angeles', 'California State University, Northridge', 'Case Western Reserve University', 'Clemson University', 'Cleveland State University', 'Colorado State University', 'Colorado State University, Fort Collins', 'Columbia University', 'Drexel University', 'Florida State University', 'George Washington University', 'Illinois Institute of Technology', 'Iowa State University', 'Michigan State University', 'Michigan Technological University', 'Missouri University of Science and Technology', 'New Jersey Institute of Technology', 'New York University', 'North Carolina State University', 'Northern Illinois University', 'Northwestern University', 'Pennsylvania State University', 'Rochester Institute of Technology', 'SUNY, University at Buffalo', 'San Diego State University', 'San Jose State University', 'Southern Illinois University, Edwardsville', 'Southern Methodist University', 'Stanford University', 'State University of New York, Buffalo', 'Stevens Institute of Technology', 'Syracuse University', 'Texas A&M University, College Station', 'Texas Tech University', 'University of Bridgeport', 'University of California, Berkeley', 'University of California, Irvine', 'University of California, Los Angeles', 'University of California, Riverside', 'University of Central Florida', 'University of Cincinnati', 'University of Colorado, Boulder', 'University of Dayton', 'University of Houston', 'University of Illinois, Chicago', 'University of Maryland, Baltimore', 'University of Massachusetts, Dartmouth', 'University of Massachusetts, Lowell', 'University of Michigan, Dearborn', 'University of Minnesota, Twin Cities', 'University of Missouri, Kansas City', 'University of New Haven', 'University of North Carolina, Charlotte', 'University of North Texas', 'University of Pennsylvania', 'University of Pittsburgh', 'University of South Florida', 'University of Southern California', 'University of Tennessee, Knoxville', 'University of Texas, Arlington', 'University of Texas, Dallas', 'University of Virginia', 'University of Washington', 'University of Wisconsin, Madison', 'Virginia Tech University', 'Wright State University'];
+    
+        if (xDropdown.value === "7") {
+          // Set options for "a" selected
+          for (var i = 0; i < optionsA.length; i++) {
+            var option = document.createElement("option");
+            option.text = optionsA[i];
+            option.value = optionsA[i];
+            yDropdown.add(option);
+          }
+        } else if (xDropdown.value === "20") {
+          // Set options for "b" selected
+          for (var i = 0; i < optionsB.length; i++) {
+            var option = document.createElement("option");
+            option.text = optionsB[i];
+            option.value = optionsB[i];
+            yDropdown.add(option);
+          }
+        }
+      }
+    </script>
+
+
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label style="font-size: 17px">Extra details</label>
+      </div>
+      <div class="col-sm-5 form-group">
+        <label class="control-label" for="Work-exp">Work experience (months)</label>
+        <input min="0" max="100" step="1" required="required" class="form-control" type="number" name="work-exp" id="work-exp" />
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="col-sm-5 form-group">
+        <label class="control-label" for="research">Research paper published</label>
+        <input min="0" max="10" step="1" required="required" class="form-control" type="number" name="research" id="research" />
+        <div class="help-block with-errors"></div>
+      </div>
+      
+    </div>
+
+
+
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div id = "evaluate" data-step="" data-intro="Fill the form and click on this button to get your prediction"  class="col-sm-6 page2">
+        <input type="submit" name="commit" value="Predict" class="btn btn-dark" style="width:100%; margin-bottom: 10px;" />
+      </div>
+    </div>
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+    <div class="row">
+      
+        <div class="col-sm-2">
+          <label style="font-size: 17px">Results:</label>
+        </div>
+  
+      <div class="col-sm-4">
+      </div>
+      <div id = "evaluate" data-step="" data-intro="Fill the form and click on this button to get your prediction"  class="col-sm-6 page2">
+        <h2>{{result2}}</h2>
+      </div>
+    </div>
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+    <div class="row">
+      
+        <div class="col-sm-2">
+          <label style="font-size: 17px">Safe (Colleges that are cosidered easy to get into) :</label>
+        </div>
+  
+      <div class="col-sm-4">
+      </div>
+      <div id = "evaluate" data-step="" data-intro="Fill the form and click on this button to get your prediction"  class="col-sm-6 page2">
+        <h2>{{safe1}}</h2><br>
+        <h2>{{safe2}}</h2><br>
+        <h2>{{safe3}}</h2><br>
+      </div>
+    </div>
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+    <div class="row">
+      
+      <div class="col-sm-2">
+        <label style="font-size: 17px">Moderate (Colleges that are cosidered slightly difficult to get into):</label>
+      </div>
+
+    <div class="col-sm-4">
+    </div>
+    <div id = "evaluate" data-step="" data-intro="Fill the form and click on this button to get your prediction"  class="col-sm-6 page2">
+      <h2>{{moderate1}}</h2><br>
+      <h2>{{moderate2}}</h2><br>
+      <h2>{{moderate3}}</h2><br>
+    </div>
+  </div>
+  <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 1px">
+  <div class="row">
+      
+    <div class="col-sm-2">
+      <label style="font-size: 17px">Ambitious (Colleges that are cosidered difficult to get into) :</label>
+    </div>
+
+  <div class="col-sm-4">
+  </div>
+  <div id = "evaluate" data-step="" data-intro="Fill the form and click on this button to get your prediction"  class="col-sm-6 page2">
+    <h2>{{ambitious1}}</h2><br>
+    <h2>{{ambitious2}}</h2><br>
+    <h2>{{ambitious3}}</h2><br>
+  </div>
+</div>
+  </div>
+ 
+    <div class="row">
+      <div class="col-md-12">
+      <br>
+      <small> 
+        <b><u> Disclaimer:</u></b> 
+        Please note that the prediction provided is based on the available information and may not be 100% accurate. This is because the Statement of Purpose (SOP) and Letter of Recommendation (LOR) are not taken into account. These documents can have a significant impact on the admission decision, and their absence may affect the accuracy of the prediction.
+      </small>
+      </div>
+    </div>
+    <hr style="margin-top: 10px; margin-bottom: 10px; border-top-width: 5px">
+
+  </fieldset>
+</form>
+
+<style>
+  .clickable {
+      cursor: pointer;
+  }
+</style>
+
+<script>
+  var currentDate = '2023-04-16';
+  var fallDate = '2023-07-01';
+  var currentYear = 2023;
+  var email_element = $("#profile_evaluator_email");
+  var email_otp_verified = false;
+  var otp_verified = false;
+  var phone_number_element = $("#profile_evaluator_phoneno");
+  var validation_div = $("#verify-email-mobile-otp-dialog") 
+
+  function gre_status(){
+    $("#profile_evaluator_test_taken").change(function(){
+          gre_labels();
+
+    });
+  }
+
+  function gre_labels(){
+    val = $("#profile_evaluator_test_taken").val();
+    var lbl_quant= document.getElementById('gre_quant');
+    var lbl_verbal= document.getElementById('gre_verbal');
+    var lbl_awa= document.getElementById('gre_awa');
+    if(val=='false'){
+      lbl_quant.innerText = 'GRE Quant (expected)';
+      lbl_verbal.innerText = 'GRE Verbal (expected)';
+      lbl_awa.innerText = 'GRE AWA (expected)';
+    } else{
+      lbl_quant.innerText = 'GRE Quant';
+      lbl_verbal.innerText = 'GRE Verbal';
+      lbl_awa.innerText = 'GRE AWA'; 
+    }
+  }
+
+  gre_status();
+</script>
+<script src="https://d1x493qjo34sk9.cloudfront.net/assets/email_validation-e2bdd9cd8d1a77f78109c335311ed29483aafa8cd064ba434e71c467feb9ba38.js" async="async"></script>
+<script src="https://d1x493qjo34sk9.cloudfront.net/assets/otp_validation-bd7f2a002e8f25616bcec69abd99b75f1fa4a32bc25b75a5262968ecde008ce3.js" async="async"></script>
+<script src="https://d1x493qjo34sk9.cloudfront.net/assets/profile_evaluator/all_schools_new-025ad4cee93a0e84c04ab08c033bd350676fbf5553a11101b710d9ed43f1af67.js"></script>
+
+
+
+        </div>
+
+        <div class="col-sm-12 col-xs-12 portfolio-box portfolio-filter-faqs portfolio-item">
+          <style type="text/css">
+.panel
+{
+text-align: left !important;
+}
+</style>
+
+    
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<style>
+  .clickable {
+    cursor: pointer;
+  }
+
+  .select2 {
+    width: 100%!important;
+  }
+</style>
+
+
+      </div>
+    </div>
+            <div id="main-content" class="no-pd">
+  
+</div>
+
+<style>
+  .content1{
+  position: relative;
+  margin: 130px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+.content1 .test{
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+}
+.content1 .p{
+  font-size: 2.1875rem;
+  font-weight: 600;
+  color: black;
+}
+footer{
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  background: #5995fd;
+}
+.main-content{
+  display: flex;
+}
+.main-content .box{
+  flex-basis: 50%;
+  padding: 10px 20px;
+}
+.box h2{
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.box .content{
+  margin: 20px 0 0 0;
+  position: relative;
+}
+.box .content:before{
+  position: absolute;
+  content: '';
+  top: -10px;
+  height: 2px;
+  width: 100%;
+  background: #1a1a1a;
+}
+.box .content:after{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 15%;
+  background: #EAEDF2;
+  top: -10px;
+}
+.left .content p{
+  text-align: justify;
+}
+.left .content .social{
+  margin: 20px 0 0 0;
+}
+.left .content .social a{
+  padding: 0 2px;
+}
+.left .content .social a span{
+  height: 40px;
+  width: 40px;
+  background: white;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.left .content .social a span:hover{
+  background: white;
+}
+.center .content .fas{
+  font-size: 1.4375rem;
+  background: white;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.center .content .fas:hover{
+  background: #EAEDF2;
+}
+.center .content .text{
+  font-size: 1.0625rem;
+  font-weight: 500;
+  padding-left: 10px;
+}
+.b{
+  color:black;
+}
+.center .content .phone{
+  margin: 15px 0;
+}
+.right form .test{
+  font-size: 1.0625rem;
+  margin-bottom: 2px;
+  color: #656565;
+}
+.right form .msg{
+  margin-top: 10px;
+}
+.right form input, .right form textarea{
+  width: 100%;
+  font-size: 1.0625rem;
+  padding-left: 10px;
+  border: 1px solid #222222;
+}
+.right form input:focus,
+.right form textarea:focus{
+  outline-color: #3498db;
+}
+.right form input{
+  height: 35px;
+}
+.right form .bt{
+  margin-top: 10px;
+}
+.right form .bt button{
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: white;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+.right form .bt button:hover{
+  background: #EAEDF2;
+}
+.bottom center{
+  padding: 5px;
+  font-size: 0.9375rem;
+  background: #151515;
+}
+.bottom center span{
+  color: #656565;
+}
+.bottom center a{
+  color: #f12020;
+  text-decoration: none;
+}
+.bottom center a:hover{
+  text-decoration: underline;
+}
+@media screen and (max-width: 900px) {
+  footer{
+    position: relative;
+    bottom: 0px;
+  }
+  .main-content{
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .main-content .box{
+    margin: 5px 0;
+  }
+}
+
+</style>
+<script>
+  function validatecontact(){
+      
+      var email =
+          document.forms.RegForm.EMail.value;
+      
+      var message =
+          document.forms.RegForm.message.value;
+      //Javascript reGex for Email Validation.
+      var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; 
+      
+                              
+   
+  
+   
+      
+      if (email == "" || !regEmail.test(email)) {
+          window.alert("Please enter a valid e-mail address.");
+          email.focus();
+          return false;
+      }
+      if (message == "") {
+          window.alert("Please enter your message.");
+          message.focus();
+          return false;
+      } 
+       
+      return true;
+  } 
+</script>
+
+<footer id="footer">
+  <div class="main-content">
+    <div class="left box">
+      <h2><b>About us</b></h2>
+      <div class="content">
+        <p><b>This website is created by Ansh Shah and Shivam Shukla, who are students of K.J. Somaiya College of Engineering. It was built to help students who are planning to apply for masters in U.S choose the best possible university according to their profile.</b></p>
+      </div>
+    </div>
+
+    <div class="center box">
+      <h2><b>Address</b></h2>
+      <div class="content">
+        <div class="place">
+          <span class="fas fa-map-marker-alt" style="color:#5995fd"></span>
+          <span class="test"><b>Mumbai, Maharashtra</b></span>
+        </div>
+        <br>
+        <div class="email">
+          <span class="fas fa-envelope" style="color:#5995fd"></span>
+          <span class="test"><b>abc@example.com</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="right box">
+      <h2><b>Contact us</b></h2>
+      <div class="content">
+        <form action="#">
+          <div class="email">
+            <div class="test"><b>Email *</b></div>
+            <input  name="EMail" required>
+          </div>
+          <div class="msg">
+            <div class="test"><b>Message *</b></div>
+            <textarea rows="2" name='message' cols="25" required></textarea>
+          </div>
+          <div class="bt">
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    
+  </div>
+  <div class="bottom">
+    <center>
+      <span class="credit">Created By <a href="">Ansh Shah And Shivam Shukla</a> | </span>
+      <span class="far fa-copyright"></span><span> 2023 All rights reserved.</span>
+    </center>
+  </div>
+</footer>
+
+
+    
+  </div>
+  <link rel="manifest" href="/manifest.json">
+
+    
+
+</body>
+</html>
