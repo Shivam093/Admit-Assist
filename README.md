@@ -25,7 +25,7 @@
 Ensure you have the following installed:
 
 - Python 3.x
-- pip (Python package installer)
+- pip (Python Package Installer)
 - MySQL
 
 ### Clone the Repository
